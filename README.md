@@ -22,3 +22,5 @@ Implements generic SHA-256 algorithm using VHDL.
         -- message ( 512 bits )
       -- Output
         -- digest  ( 256 bits )
+      -- Parameters
+        -- message length
