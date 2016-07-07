@@ -1,7 +1,7 @@
 ---------------------------------------
--- SHA-256 Main core
--- Rev 0.4
--- Peter Fousteris
+-- Module : SHA-256 Core
+-- Revision: 0.7
+-- Author : Peter Fousteris
 ----------------------------------------
 
 library ieee;
@@ -13,29 +13,24 @@ entity sha256_core is
 generic ( messageLength : integer := 3*8 );
 port(
       -- Inputs
-      clock : in std_logic;
-      reset : in std_logic;
-      enable : in std_logic;
-      message : in std_logic_vector( 511 downto 0 );
+      	clock : in std_logic;
+        reset : in std_logic; --Active-high
+      	enable : in std_logic; --Active-high
+    	 	message : in std_logic_vector( 511 downto 0 );
       -- Output
       digest : out std_logic_vector( 255 downto 0 )
     );
 end entity;
 
 architecture behaviour of sha256_core is
-  -- A generic 256-bit register to hold H(7-0) values.
-  signal Hashes : std_logic_vector( 255 downto 0 ) := ( others => '0' );
+  signal Hashes : std_logic_vector( 255 downto 0 ) := ( others => '0' ); -- A generic 256-bit register. Holds H(7-0) values.
   signal W : wordArray;
-  -- Working registers.
-  signal a, b, c, d, e, f, g, h : std_logic_vector( 31 downto 0 );
+  signal a, b, c, d, e, f, g, h : std_logic_vector( 31 downto 0 ); -- Working registers.
   -- A N x 512-bit array which holds every block of the padded message.
   signal M : BlockM ( ( kCalculator( messageLength ) + messageLength + 1 + 64 )/ 512 - 1 downto 0 ) := ( (others => ( others => '0' ) ) );
-  -- Main proccess used flags.
-  signal init, ready, padded, schedulled, hashed : boolean := false;
-  
+  signal init, ready, padded, schedulled, hashed : boolean := false;  -- Main process flags.
+ -- Main hashing process  
 begin
-
-  -- Main hashing process
   sha256_hash: process( clock, reset, enable )
     variable i, t, hashIt : integer := 0; -- Iterators.
     variable N : integer := 0; -- Holds total number of Message blocks.
