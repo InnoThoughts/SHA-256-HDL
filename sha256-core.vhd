@@ -14,7 +14,7 @@ generic ( messageLength : integer := 3*8 );
 port(
       -- Inputs
       	clock : in std_logic;
-        reset : in std_logic; --Active-high
+            reset : in std_logic; --Active-high
       	enable : in std_logic; --Active-high
     	 	message : in std_logic_vector( 511 downto 0 );
       -- Output
