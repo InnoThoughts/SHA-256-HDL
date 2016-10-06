@@ -1,26 +1,18 @@
 # SHA-256-HDL
-Implements generic SHA-256 algorithm using VHDL.
+A Hardware implementation of SHA-256 (SHA-2 family) cryptographic hash algorithm.
 
-## Main module
-### sha256_core
+## SHA-256-HDL
+### Top level module - sha256_core
 
-                  _ _ _ _ _ _ _ _ _ _                      
-                /                     \                         
-               |                       |                     
-      clock  > |                       |       
-      reset  > |      sha256_core      | > digest
-     enable  > |                       |
-     message > |                       |
-               |                       |                  
-                \ _ _ _ _ _ _ _ _ _ _ /                      
+                 _ _ _ _ _ _ _ _                                           
+     (Inputs)   |               |  (Outputs)                   
+      clock  -> |               |       
+      reset  -> |               | -> digest
+     enable  -> |               |
+     message -> |               |
+                |  sha256_core  |                  
+                 _ _ _ _ _ _ _ _                      
                                                                      
-                                                                      
-      -- Inputs
-        -- clock
-        -- reset
-        -- enable
-        -- message ( 512 bits )
-      -- Output
-        -- digest  ( 256 bits )
-      -- Parameters
-        -- message length
+    -- Parameters
+      -- messageLength
+
