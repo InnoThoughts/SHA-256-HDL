@@ -5,7 +5,9 @@ A simple and straigthforward implementation of SHA-256 algorith written in VHDL 
 ## Main Features
 1. 2^9-1 bits max message length.
 2. Automatted message padding.
-3. 132 processing cycles/message block 
+3. 132 processing cycles/message block.
+4. FIPS 180-2 compliant.
+5. Suitable for data authentication applications.
 
 ## Top level module - sha256_core
 
