@@ -1,8 +1,15 @@
 # SHA-256-HDL
-A Hardware implementation of SHA-256 (SHA-2 family) cryptographic hash algorithm.
 
-## SHA-256-HDL
-### Top level module - sha256_core
+A simple implementation of SHA-256 algorith written in VHDL *(tested and simulated on ModelSim v11.2)* for computing the diggest of any String.
+
+## Main Features
+1. 2^9-1 bits max message length.
+2. Automatted message padding.
+3. 132 processing cycles/message block 
+4. Straigthforward implementation of algorithm.
+5. 
+
+## Top level module - sha256_core
 
                  _ _ _ _ _ _ _ _                                           
      (Inputs)   |               |  (Outputs)                   
@@ -16,3 +23,11 @@ A Hardware implementation of SHA-256 (SHA-2 family) cryptographic hash algorithm
     -- Parameters
       -- messageLength
 
+| Signal        | Direction     | Description  |
+| ------------- |:-------------:| ------------:|
+| clock         | input         | Input Clock  |
+| reset         | input         | Asynchronous reset  |
+| enable | input      |    Module Enable        |
+| message | input      |    Input Message        |
+| messageLength | parameter      |   Length of Input Message        |
+| digest | output      |    Output diggest        |
