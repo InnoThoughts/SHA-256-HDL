@@ -1,6 +1,9 @@
 # SHA-256-HDL
 
-A simple and straigthforward implementation of SHA-256 algorith written in VHDL *(tested and simulated on ModelSim v11.2)* for computing the diggest of any String.
+A simple and straigthforward implementation of SHA-256 algorith written in VHDL *(tested and simulated on ModelSim v11.2)* for computing the diggest of any input String. 
+
+*( You can also take a look at the corresponding implementation for [matlab](https://github.com/lostpfg/SHA-256-Matlab)
+)*
 
 ## Main Features
 1. 2^9-1 bits max message length.
